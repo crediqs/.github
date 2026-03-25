@@ -98,30 +98,6 @@ Regulations covered: **MiCA** (Art. 43-58) · **CRR3** (Art. 274-280) · **IFRS 
 
 ---
 
-## Roadmap
-
-```
-✅  Phase 1–5    Core libraries
-                   pyccr v0.8 · pycredit v0.3 · pychain v0.3 · crediqs-core v0.2
-
-✅  Phase 6      Compliance Intelligence + crediqs-catalogue v0.1
-
-⬜  Phase 7      Stress Testing + VaR
-                   pyccr v0.9 · pycredit v0.4 · new API endpoints
-
-⬜  Phase 7.5    crediqs-platform v0.1
-                   Canvas UI · YAML portfolio spec · CLI
-                   Data source adapters · QuantConnect/LEAN integration
-
-⬜  Phase 8      pychain v0.4 — CrossChainBridgeRisk · Chainlink CCIP
-
-⬜  Phase 9      crediqs-data — live market data feeds · adapter management
-
-⬜  Phase 10     crediqs-agent — natural language risk interface
-```
-
----
-
 ## Contributing
 
 We welcome contributions to the open-source libraries (pyccr, pycredit, crediqs-catalogue). For model feedback, use the [crediqs-catalogue feedback API](https://github.com/crediqs/crediqs-catalogue). For bugs and features, open an issue in the relevant repository.
