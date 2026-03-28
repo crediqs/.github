@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/crediqs/.github/main/assets/crediqs-banner.png" height="300%" width="100%" />
+<img src="https://raw.githubusercontent.com/crediqs/.github/main/assets/crediqs-banner.png" height="100%" width="100%" />
 
 **Institutional credit risk infrastructure · Open source · Production ready**
 
