@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/crediqs/.github/main/assets/crediqs-banner.png" width="100%" />
+<img src="https://raw.githubusercontent.com/crediqs/.github/main/assets/crediqs-banner.png" width="50%" />
 
 # crediqs
 
