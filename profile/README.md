@@ -12,15 +12,12 @@ Institutional risk intelligence platform covering counterparty credit risk (SA-C
 
 ## Compliance Intelligence
 
-Automated regulatory checks with exact citations — built into crediqs-api v0.3.
-
 Regulations covered: **MiCA** (Art. 43-58) · **CRR3** (Art. 274-280) · **IFRS 9** (§5.5)
-
 
 ---
 
 <div align="center">
 
-[Website](https://crediqs.ai) · [API Docs]· [Model Catalogue] · [Contact](mailto:info@crediqs.ai)
+[Website](https://crediqs.ai) · [Contact](mailto:info@crediqs.ai)
 
 </div>
