@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/crediqs/.github/main/assets/crediqs-banner.png" width="100%" />
 
-**Institutional credit risk infrastructure · Open source · Production ready**
+**Institutional credit risk infrastructure · Production ready**
 
 [![pyccr](https://img.shields.io/badge/pyccr-v0.8.0-845ef7)](https://github.com/crediqs/pyccr)
 [![pycredit](https://img.shields.io/badge/pycredit-v0.3.0-845ef7)](https://github.com/crediqs/pycredit)
@@ -16,7 +16,7 @@
 
 ---
 
-Open-source credit risk platform covering counterparty credit risk (SA-CCR, xVA, exposure simulation), IFRS 9 expected credit loss, on-chain DeFi risk, and real-world asset (RWA) risk. Every model is calibrated to academic research and regulatory standards, fully documented in the [crediqs-catalogue](https://github.com/crediqs/crediqs-catalogue), and available via a [public REST API](https://crediqs-api-demo.up.railway.app/docs).
+Institutional risk intelligence platform covering counterparty credit risk (SA-CCR, xVA, exposure simulation), IFRS 9 expected credit loss, on-chain DeFi risk, and real-world asset (RWA) risk. Every model is calibrated to academic research and regulatory standards, fully documented in the [crediqs-catalogue](https://github.com/crediqs/crediqs-catalogue), and available via a [public REST API](https://crediqs-api-demo.up.railway.app/docs).
 
 ---
 
