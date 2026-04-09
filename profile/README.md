@@ -59,16 +59,12 @@ curl https://crediqs-api-demo.up.railway.app/health
 
 ## REST API
 
-All libraries accessible via HTTP at [`crediqs-api-demo.up.railway.app`](https://crediqs-api-demo.up.railway.app/docs). Stateless, with optional `overrides` to substitute any calibrated parameter.
-
 | Group | Endpoints |
 |---|---|
 | Credit risk | `/v1/ecl` · `/v1/cva` · `/v1/xva` · `/v1/rating` · `/v1/rating/ensemble` |
 | On-chain | `/v1/stablecoin` · `/v1/protocol` · `/v1/rwa` · `/v1/smart-contract` · `/v1/governance-token` · `/v1/debt-token` · `/v1/carbon-token` |
 | Compliance | `/v1/compliance/check` · `/v1/compliance/alerts` |
 | Portfolio | `/v1/portfolio` · `/v1/scenario` |
-
-See the [API documentation](https://crediqs-api-demo.up.railway.app/docs) for full reference.
 
 ---
 
@@ -77,12 +73,6 @@ See the [API documentation](https://crediqs-api-demo.up.railway.app/docs) for fu
 Automated regulatory checks with exact citations — built into crediqs-api v0.3.
 
 Regulations covered: **MiCA** (Art. 43-58) · **CRR3** (Art. 274-280) · **IFRS 9** (§5.5)
-
----
-
-## Contributing
-
-We welcome contributions to the open-source libraries (pyccr, pycredit, crediqs-catalogue). For model feedback, use the [crediqs-catalogue feedback API](https://github.com/crediqs/crediqs-catalogue). For bugs and features, open an issue in the relevant repository.
 
 ---
 
@@ -101,6 +91,6 @@ We welcome contributions to the open-source libraries (pyccr, pycredit, crediqs-
 
 <div align="center">
 
-[Website](https://crediqs.ai) · [API Docs](https://crediqs-api-demo.up.railway.app/docs) · [Model Catalogue](https://github.com/crediqs/crediqs-catalogue) · [Contact](mailto:hello@crediqs.io)
+[Website](https://crediqs.ai) · [API Docs]· [Model Catalogue] · [Contact](mailto:info@crediqs.ai)
 
 </div>
