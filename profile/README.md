@@ -43,22 +43,6 @@ Or use the API directly — no installation required:
 ```bash
 curl https://crediqs-api-demo.up.railway.app/health
 ```
-
----
-
-## Repositories
-
-| Repository | Description | Version | Tests | License |
-|---|---|---|---|---|
-| [**pyccr**](https://github.com/crediqs/pyccr) | Counterparty credit risk · SA-CCR · xVA · SIMM · Exposure simulation | v0.8.0 | 487 | Apache 2.0 |
-| [**pycredit**](https://github.com/crediqs/pycredit) | IFRS 9 ECL · PD curves · Scorecards · Macro overlay | v0.3.0 | 185 | Apache 2.0 |
-| [**pychain**](https://github.com/crediqs/pychain) | DeFi · Stablecoin · RWA · Smart contract · Governance · Carbon | v0.3.0 | 273 | Apache 2.0 |
-| [**crediqs-core**](https://github.com/crediqs/crediqs-core) | Unified rating · Transition matrix · Ensemble blending | v0.2.0 | 186 | Apache 2.0 |
-| [**crediqs-api**](https://github.com/crediqs/crediqs-api) | REST API — all libraries via HTTP | v0.4.0 | 276+ | Apache 2.0 |
-| [**crediqs-catalogue**](https://github.com/crediqs/crediqs-catalogue) | Model documentation · 73 parameters · Regulatory citations | v0.1.0 | 30 | Apache 2.0 |
-
-> Each repository has its own README with full documentation, code examples, and API reference.
-
 ---
 
 ## What Each Library Does
