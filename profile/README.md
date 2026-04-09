@@ -28,21 +28,6 @@ pip install pycredit     # IFRS 9 ECL · PD curves · Scorecards
 pip install pychain      # DeFi · Stablecoin · RWA · Smart contract
 ```
 
-```python
-from pyccr import CVA
-cva = CVA(pd_1y=0.007, lgd=0.60, notional=10_000_000, maturity=5.0).compute()
-
-from pycredit import compute_ecl
-ecl = compute_ecl(ead=500_000, maturity=3.0, pd_1y=0.02, lgd=0.45)
-
-from pychain.risk.smart_contract import assess_known_protocol
-sc = assess_known_protocol("aave-v3")
-```
-
-Or use the API directly — no installation required:
-```bash
-curl https://crediqs-api-demo.up.railway.app/health
-```
 ---
 
 ## What Each Library Does
