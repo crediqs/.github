@@ -31,8 +31,6 @@ very number is traceable. Every decision is explainable. Every assessment makes 
        ▼
  Platform             Projects · environments · DashboardLoader · AI Workspace
 
----
-
 ## Repositories
 
 | Repository | Description | Tests | Status |
@@ -51,6 +49,21 @@ very number is traceable. Every decision is explainable. Every assessment makes 
 | [`platform-backend`](https://github.com/crediqs/platform-backend) | FastAPI backend. Projects, environments, workflows, cases, Decision Engine (22 rules), model governance lifecycle, memory authority, WebSocket streaming. | — | ● Active |
 | [`platform-frontend`](https://github.com/crediqs/platform-frontend) | Next.js 15 / React 19 / TypeScript. R3 architecture: DashboardLoader, WIDGETS registry, node-driven rendering, Settings → Models governance, AI Workspace copilot. | — | ● Active |
 
+## Technical foundation
+
+### Unified PDCurve
+
+The single most important architectural decision. Three PD sources — CDS bootstrap (market-implied), WOE/XGBoost scorecard (statistical/ML), and on-chain liquidation bootstrap (DeFi) — produce the same `PDCurve` object that feeds the same CVA engine and the same ECL computation.
+
+```python
+# Same interface, three sources
+pd_curve = CDSCurve.from_spread(85, lgd=0.45)              # TradFi: market-implied
+pd_curve = WOEScorecard.predict(features).to_pd_curve()      # Credit: statistical
+pd_curve = LiquidationBootstrap.fit(snapshot).pd_curve        # DeFi: on-chain
+# All three feed:
+cva = compute_cva(exposure_profile, pd_curve, ois_curve)     # same CVA engine
+ecl = compute_ecl(ead, pd_curve, lgd, stage)                  # same ECL engine
+```
 
 <div align="center">
 
