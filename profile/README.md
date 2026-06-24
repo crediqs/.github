@@ -1,4 +1,3 @@
-<div align="center">
 
 <img src="https://raw.githubusercontent.com/crediqs/.github/main/assets/crediqs-banner.png" width="100%" />
 
