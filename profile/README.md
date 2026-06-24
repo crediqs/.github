@@ -27,6 +27,7 @@ Every number is traceable. Every decision is explainable.
 Every assessment makes the next one smarter.
 </p>
 
+<!--
 ## Platform architecture
 
 ```
@@ -61,7 +62,7 @@ Every assessment makes the next one smarter.
        ▼
  Platform                    Projects · environments · DashboardLoader · AI Workspace copilot
 ```
-
+-->
 ## Repositories
 
 ### Risk engines
