@@ -1,25 +1,42 @@
 <h1 align="center">CrediQS</h1>
 
 <p align="center">
-  Financial risk intelligence platform. 
-
-<p align="center">
-  Graph-native · Memory-native · Regulator-ready
+Financial risk intelligence platform.
 </p>
 
-## What crediqs is
+<p align="center">
+Graph-native · Memory-native · Regulator-ready
+</p>
 
-crediqs is the only risk platform where TradFi derivatives and DeFi positions share the same probability-of-default curve, the same CVA engine, and the same regulator-citable explanation.
+<p align="center">
+<strong>
+Unified risk intelligence across TradFi and DeFi,
+powered by a shared probability-of-default framework,
+common CVA engine, and explainable assessments.
+</strong>
+</p>
+
+<p align="center">
+<strong>
+crediqs is the only risk platform where TradFi derivatives and DeFi positions
+share the same probability-of-default curve, the same CVA engine,
+and the same regulator-citable explanation.
+</strong>
+</p>
+
 ---
 
-very number is traceable. Every decision is explainable. Every assessment makes the next one smarter.
+<p align="center">
+Every number is traceable. Every decision is explainable.
+Every assessment makes the next one smarter.
+</p>
 
 ## Platform architecture
 
 ```
- Data Ingestion          OIS · CDS · FX · vol · DeFi · climate
+ Data Ingestion           OIS · CDS · FX · vol · DeFi · climate
        ▼
- Real-Time Signals       GNN contagion · cashflow velocity · NLP sentiment
+ Real-Time Signals        GNN contagion · cashflow velocity · NLP sentiment
        ▼
  Climate Overlay          Physical risk · transition risk · NGFS v5 · OSFI SCSE
        ▼
