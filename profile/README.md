@@ -14,6 +14,8 @@ Unified risk intelligence across TradFi and DeFi.
 </strong>
 </p>
 
+---
+
 <p align="center">
 TradFi derivatives and DeFi positions share the same
 probability-of-default curve, the same CVA engine,
