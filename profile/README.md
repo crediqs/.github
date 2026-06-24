@@ -54,7 +54,7 @@ Every assessment makes the next one smarter.
 | Repository | Description | Tests | Status |
 |---|---|---|---|
 | [`pyccr`](https://github.com/crediqs/pyccr) | Counterparty credit risk and market risk engine. CVA/DVA/FVA/KVA via Hull-White Monte Carlo, SA-CCR, VaR/ES, OIS curve bootstrapping, CDS curve, sensitivity analysis. | 487 | ● Active |
-| [`pyccr.vol`](https://github.com/crediqs/pyccr) | Volatility surface module. BSM, Black-76, SABR (Hagan 2002), Heston (1993), neural calibration, Greeks (1st + 2nd order), FRTB SBA vega + curvature charges. | 144 | ◐ Building |
+| [`pyccr.vol`](https://github.com/crediqs/pyccr) | Volatility surface module. BSM, Black-76, SABR (Hagan 2002), Heston (1993), neural calibration, Greeks (1st + 2nd order), FRTB SBA vega + curvature charges. | 144 | ● Active |
 | [`pycredit`](https://github.com/crediqs/pycredit) | IFRS 9 expected credit loss engine. PD/LGD/EAD, WOE logistic scorecard, XGBoost PD, SICR detection, vintage analysis, forward-looking 3-scenario weighting. | 225 | ● Active |
 | [`pychain`](https://github.com/crediqs/pychain) | DeFi risk engine. Liquidation bootstrap PD, smart contract exploit scoring, stablecoin/MiCA, governance HHI, oracle risk, bridge risk, GNN contagion, real-time monitor. | 367 | ● Active |
 | [`crediqs-core`](https://github.com/crediqs/crediqs-core) | Shared infrastructure. Unified PDCurve, CreditRating, TransitionMatrix, CalibrationRegistry (73 parameters), RiskEngineResult protocol, zero-fallback contracts. | 29 | ● Active |
