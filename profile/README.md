@@ -10,21 +10,15 @@ Graph-native · Memory-native · Regulator-ready
 
 <p align="center">
 <strong>
-Unified risk intelligence across TradFi and DeFi,
-powered by a shared probability-of-default framework,
-common CVA engine, and explainable assessments.
+Unified risk intelligence across TradFi and DeFi.
 </strong>
 </p>
 
 <p align="center">
-<strong>
-crediqs is the only risk platform where TradFi derivatives and DeFi positions
-share the same probability-of-default curve, the same CVA engine,
+TradFi derivatives and DeFi positions share the same
+probability-of-default curve, the same CVA engine,
 and the same regulator-citable explanation.
-</strong>
 </p>
-
----
 
 <p align="center">
 Every number is traceable. Every decision is explainable.
