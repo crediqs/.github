@@ -162,11 +162,10 @@ Every model cites its academic source. Every regulatory computation cites the sp
 | Infrastructure | Docker, Redis, Railway (API), Render (backend), Vercel (frontend) |
 
 <div align="center">
-
 [Website](https://crediqs.ai) · [Contact](mailto:info@crediqs.ai)
-
+</div>
 ---
 
 *Graph-native risk intelligence. Every assessment makes the next one smarter.*
 
-</div>
+
