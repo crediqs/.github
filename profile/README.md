@@ -1,6 +1,3 @@
-
-<img src="https://raw.githubusercontent.com/crediqs/.github/main/assets/crediqs-banner.png" width="20%" />
-
 # crediqs
 
 **Financial risk intelligence platform. Graph-native. Memory-native. Regulator-ready.**
