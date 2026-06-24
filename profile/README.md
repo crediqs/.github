@@ -30,42 +30,70 @@ Every assessment makes the next one smarter.
 ## Platform architecture
 
 ```
- Data Ingestion           OIS · CDS · FX · vol · DeFi · climate
+ Data Ingestion              OIS · CDS · FX · vol quotes · DeFi · climate · Open Banking
        ▼
- Real-Time Signals        GNN contagion · cashflow velocity · NLP sentiment
+ Real-Time Signals           GNN contagion · cashflow velocity · NLP sentiment · peg monitoring
        ▼
- Climate Overlay          Physical risk · transition risk · NGFS v5 · OSFI SCSE
+ Climate Overlay             Physical risk (BIS 1274) · transition (NGFS v5) · OSFI SCSE
        ▼
- Orchestration            LangGraph agents · Decision Engine · Memory Layer (6 layers)
+ Orchestration Agent         LangGraph agents · Decision Engine · Memory (6 layers) · Graph
        ▼
- Six Risk Engines         Credit · Liquidity · Third-party · DeFi · ESG · Market
+ Product Definition          Portfolio & Trade Lifecycle · TradeDefinition · NettingSet · CSA
        ▼
- Explainability           SHAP · lineage · trace · counterfactual · fairness
+ Greeks & Sensitivities      Delta · Gamma · Vega · Theta · Rho · DV01 · CS01 · KRD · Vanna · Volga
        ▼
- Stress Testing           EBA · CCAR · FRTB · ICAAP · reverse stress · backtest
+ Credit Risk / IFRS 9        CVA · SA-CCR · ECL staging · PDCurve · scorecard · XGBoost PD
+ Liquidity Risk              LCR · NSFR · cashflow forecast · redemption stress
+ Third-Party Risk            Vendor PD · RF scorer · DORA ICT · NLP adverse media
+ DeFi Risk                   Smart contract · stablecoin · governance · oracle · bridge · issuer
+ ESG Risk                    Carbon tokens · EU Taxonomy · SFDR · CSRD
+ Market Risk                 VaR/ES · vol surfaces (SABR/Heston) · BSM · FRTB SBA · neural calibration
        ▼
- Outputs                  Regulatory reports · decisions · alerts · explanations
+ Explainability              SHAP · lineage · trace · counterfactual · fairness · risk adapters
        ▼
- Platform                 Projects · environments · DashboardLoader · AI Workspace
+ Hedging & Portfolio Action  Delta hedge · gamma hedge · vega hedge · rebalancing · remediation
+       ▼
+ Stress Testing & Capital    EBA · CCAR · FRTB · ICAAP · reverse stress · backtest · traffic light
+       ▼
+ Portfolio Performance       Sharpe · Sortino · Treynor · Alpha · Beta · MDD · P&L attribution
+       ▼
+ Outputs & Reporting         Regulatory reports · MiCA NCA pack · Basel CVA · IFRS 9 · alerts
+       ▼
+ Platform                    Projects · environments · DashboardLoader · AI Workspace copilot
 ```
 
 ## Repositories
 
+### Risk engines
+
 | Repository | Description | Tests | Status |
 |---|---|---|---|
-| [`pyccr`](https://github.com/crediqs/pyccr) | Counterparty credit risk and market risk engine. CVA/DVA/FVA/KVA via Hull-White Monte Carlo, SA-CCR, VaR/ES, OIS curve bootstrapping, CDS curve, sensitivity analysis. | 487 | ● Active |
-| [`pyccr.vol`](https://github.com/crediqs/pyccr) | Volatility surface module. BSM, Black-76, SABR (Hagan 2002), Heston (1993), neural calibration, Greeks (1st + 2nd order), FRTB SBA vega + curvature charges. | 144 | ● Active |
-| [`pycredit`](https://github.com/crediqs/pycredit) | IFRS 9 expected credit loss engine. PD/LGD/EAD, WOE logistic scorecard, XGBoost PD, SICR detection, vintage analysis, forward-looking 3-scenario weighting. | 225 | ● Active |
-| [`pychain`](https://github.com/crediqs/pychain) | DeFi risk engine. Liquidation bootstrap PD, smart contract exploit scoring, stablecoin/MiCA, governance HHI, oracle risk, bridge risk, GNN contagion, real-time monitor. | 367 | ● Active |
-| [`crediqs-core`](https://github.com/crediqs/crediqs-core) | Shared infrastructure. Unified PDCurve, CreditRating, TransitionMatrix, CalibrationRegistry (73 parameters), RiskEngineResult protocol, zero-fallback contracts. | 29 | ● Active |
-| [`crediqs-data`](https://github.com/crediqs/crediqs-data) | Data ingestion layer. TradFi plane (FRED, ECB, CME), on-chain plane (DefiLlama, Dune, The Graph), carbon plane (Toucan, Verra). CalibrationRegistry store. GraphStore (NetworkX + DeXposure-FM). | 205 | ● Active |
-| [`crediqs-explain`](https://github.com/crediqs/crediqs-explain) | Explainability and model governance. 5 layers: data lineage, feature attribution (SHAP/analytic/transparent), decision trace, counterfactual, fairness testing. 9 registered adapters. | 195 | ● Active |
-| [`crediqs-lab`](https://github.com/crediqs/crediqs-lab) | Stress testing and model validation. Scenario engine (EBA, CCAR, historical, climate, DeFi), sensitivity sweep, backtest (55 events, traffic light, Kupiec), reverse stress, ICAAP. | 142 | ◐ Extending |
-| [`crediqs-api`](https://github.com/crediqs/crediqs-api) | FastAPI REST API. Risk engine orchestrator, 6 engine routers (v0.7), MiCA compliance endpoint, stress/sensitivity endpoints. Live on Railway. | — | ● Active |
-| [`crediqs-catalogue`](https://github.com/crediqs/crediqs-catalogue) | YAML-driven node catalogue. Input/output schemas, governance metadata, regulatory citations. Database-seeded, data-driven — zero hardcoded definitions. | — | ● Active |
-| [`agent-service`](https://github.com/crediqs/agent-service) | LangGraph 6-node intelligence agent. Classify → plan → execute → assess → synthesize → persist. Memory Layer (6 layers), graph enrichment, explain integration. | — | ● Active |
-| [`platform-backend`](https://github.com/crediqs/platform-backend) | FastAPI backend. Projects, environments, workflows, cases, Decision Engine (22 rules), model governance lifecycle, memory authority, WebSocket streaming. | — | ● Active |
-| [`platform-frontend`](https://github.com/crediqs/platform-frontend) | Next.js 15 / React 19 / TypeScript. R3 architecture: DashboardLoader, WIDGETS registry, node-driven rendering, Settings → Models governance, AI Workspace copilot. | — | ● Active |
+| [`pyccr`](https://github.com/crediqs/pyccr) | Counterparty credit risk engine. CVA/DVA/FVA/KVA via Hull-White Monte Carlo, SA-CCR EAD, VaR/ES, OIS curve bootstrapping, CDS curve, sensitivity analysis. | 487 | ● Active |
+| [`pyccr.vol`](https://github.com/crediqs/pyccr) | Volatility surface module. BSM, Black-76, SABR (Hagan 2002), Heston (1993), neural network calibration, Greeks (1st + 2nd order), FRTB SBA vega + curvature + DRC + RRAO. | 144 | ◐ Building |
+| [`pyccr.climate`](https://github.com/crediqs/pyccr) | Climate risk overlay. Physical risk (BIS 1274 Φ_q,α), transition risk (Le Guenedal/Tankov/Sopgoui), NGFS v5 scenarios, OSFI SCSE logit PD add-ons. Horizontal — applies to all engines. | 76 | ● Active |
+| [`pycredit`](https://github.com/crediqs/pycredit) | IFRS 9 expected credit loss engine. PD/LGD/EAD, WOE logistic scorecard, XGBoost PD (TreeSHAP), SICR detection, vintage analysis, forward-looking 3-scenario weighting. | 225 | ● Active |
+| [`pychain`](https://github.com/crediqs/pychain) | DeFi risk engine. Liquidation bootstrap PD, smart contract scoring, stablecoin/MiCA, governance HHI, oracle risk, bridge risk, issuer risk, GNN contagion, real-time monitor. | 367 | ● Active |
+
+### Platform infrastructure
+
+| Repository | Description | Tests | Status |
+|---|---|---|---|
+| [`crediqs-core`](https://github.com/crediqs/crediqs-core) | Shared contracts and infrastructure. Unified PDCurve, CreditRating, TransitionMatrix, CalibrationRegistry (73 parameters), RiskEngineResult protocol, zero-fallback enforcement. | 29 | ● Active |
+| [`crediqs-data`](https://github.com/crediqs/crediqs-data) | Data ingestion and graph layer. TradFi plane (FRED, ECB, CME), on-chain plane (DefiLlama, Dune, The Graph), carbon plane (Toucan, Verra), vol quotes. GraphStore (NetworkX + DeXposure-FM 4,300 edges). CalibrationRegistry store. | 205 | ● Active |
+| [`crediqs-explain`](https://github.com/crediqs/crediqs-explain) | Explainability and model governance. 5 layers: data lineage, feature attribution (SHAP/analytic/transparent), decision trace, counterfactual, fairness testing. 9 registered adapters. 4 explainability classes. | 195 | ● Active |
+| [`crediqs-lab`](https://github.com/crediqs/crediqs-lab) | Scenario engine and model validation. Regulatory stress (EBA 2025, CCAR), historical replay (GFC, COVID, crypto winter), sensitivity sweep, backtest (55 events, traffic light, Kupiec, Christoffersen), reverse stress, ICAAP capital aggregation. | 170 | ◐ Extending |
+| [`crediqs-catalogue`](https://github.com/crediqs/crediqs-catalogue) | YAML-driven node catalogue. Input/output schemas with source declarations, governance metadata, regulatory citations. Database-seeded. Zero hardcoded definitions. | — | ● Active |
+
+### Application layer
+
+| Repository | Description | Tests | Status |
+|---|---|---|---|
+| [`crediqs-api`](https://github.com/crediqs/crediqs-api) | FastAPI REST API. Risk engine orchestrator, 7 routers (v0.7), vol surface endpoints, MiCA compliance, stress/sensitivity, portfolio management. Live on Railway. | — | ● Active |
+| [`agent-service`](https://github.com/crediqs/agent-service) | AI agentic intelligence layer. LangGraph 6-node graph: classify → plan → execute → assess → synthesize → persist. Memory Layer (6 layers), graph enrichment, explain integration, data-driven node discovery. | — | ● Active |
+| [`platform-backend`](https://github.com/crediqs/platform-backend) | FastAPI backend. Projects, environments, Portfolio & Trade Lifecycle, workflows, cases, Decision Engine (22 rules), model governance lifecycle (draft → validated → production), memory authority, WebSocket streaming. | — | ● Active |
+| [`platform-frontend`](https://github.com/crediqs/platform-frontend) | Next.js 15 / React 19 / TypeScript. R3 architecture: DashboardLoader, WIDGETS registry, node-driven rendering, Settings → Models, AI Workspace copilot, Scenarios tab (stress/sensitivity/validation/library). | — | ● Active |
+
+---
 
 ## Technical foundation
 
