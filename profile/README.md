@@ -31,7 +31,7 @@ very number is traceable. Every decision is explainable. Every assessment makes 
        ▼
  Outputs                  Regulatory reports · decisions · alerts · explanations
        ▼
- Platform             Projects · environments · DashboardLoader · AI Workspace
+ Platform                 Projects · environments · DashboardLoader · AI Workspace
 ```
 
 ## Repositories
@@ -160,10 +160,8 @@ Every model cites its academic source. Every regulatory computation cites the sp
 | Frontend | Next.js 15, React 19, TypeScript, Tailwind, ReactFlow, Zustand |
 | Infrastructure | Docker, Redis, Railway (API), Render (backend), Vercel (frontend) |
 
-<div align="center">
+## Contact
 [Website](https://crediqs.ai) · [Contact](mailto:info@crediqs.ai)
-</div>
----
 
 *Graph-native risk intelligence. Every assessment makes the next one smarter.*
 
