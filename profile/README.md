@@ -1,6 +1,11 @@
-<h1 align="center">crediqs</h1>
+<h1 align="center">CrediQS</h1>
 
-**Financial risk intelligence platform. Graph-native. Memory-native. Regulator-ready.**
+<p align="center">
+  Financial risk intelligence platform. 
+
+<p align="center">
+  Graph-native · Memory-native · Regulator-ready
+</p>
 
 ## What crediqs is
 
