@@ -186,7 +186,7 @@ Every number shown on the platform must be traceable to a successful real-time m
 ### Explainability (risk engine adapters)
 
 Every engine output has a registered explain adapter. Every number carries its attribution.
-
+<!--
 | Adapter | Engine | Class | Method |
 |---|---|---|---|
 | `pyccr_cva` | pyccr | Analytic | ∂CVA/∂param sensitivity |
@@ -198,6 +198,7 @@ Every engine output has a registered explain adapter. Every number carries its a
 | `pychain_liquidation` | pychain | Analytic | ∂PD/∂λ |
 | `pychain_compliance` | pychain | Transparent | rule pass/fail |
 | `crediqs_core_rating` | crediqs-core | Transparent | ensemble weights |
+-->
 
 ### Data-driven architecture (R3)
 
@@ -226,6 +227,7 @@ Zero hardcoded profiles, templates, or dashboard mappings. Everything from the d
 
 Every model cites its academic source. Every regulatory computation cites the specific article.
 
+<!--
 | Domain | Key references |
 |---|---|
 | CVA/xVA | Hull-White (1994), Brigo-Morini-Pallavicini (2013), Basel CRE 32.42 |
@@ -236,6 +238,7 @@ Every model cites its academic source. Every regulatory computation cites the sp
 | Contagion | Battiston et al. DebtRank (2012), GAT (Veličković 2018), TAGN (2026) |
 | Fairness | EU AI Act Annex III §5(b), ECOA Reg B §1002.9, UK Equality Act |
 | Explainability | Lundberg TreeSHAP (2020), Capriotti-Giles AAD (2010), Malliavin calculus |
+-->
 
 ## Technology stack
 
