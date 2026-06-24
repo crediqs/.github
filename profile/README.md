@@ -88,7 +88,7 @@ Every assessment makes the next one smarter.
 
 | Repository | Description | Tests | Status |
 |---|---|---|---|
-| [`crediqs-api`](https://github.com/crediqs/crediqs-api) | FastAPI REST API. Risk engine orchestrator, 7 routers (v0.7), vol surface endpoints, MiCA compliance, stress/sensitivity, portfolio management. Live on Railway. | — | ● Active |
+| [`crediqs-api`](https://github.com/crediqs/crediqs-api) | FastAPI REST API. Risk engine orchestrator,routers , vol surface endpoints, MiCA compliance, stress/sensitivity, portfolio management. Live on Railway. | — | ● Active |
 | [`agent-service`](https://github.com/crediqs/agent-service) | AI agentic intelligence layer. LangGraph 6-node graph: classify → plan → execute → assess → synthesize → persist. Memory Layer (6 layers), graph enrichment, explain integration, data-driven node discovery. | — | ● Active |
 | [`platform-backend`](https://github.com/crediqs/platform-backend) | FastAPI backend. Projects, environments, Portfolio & Trade Lifecycle, workflows, cases, Decision Engine (22 rules), model governance lifecycle (draft → validated → production), memory authority, WebSocket streaming. | — | ● Active |
 | [`platform-frontend`](https://github.com/crediqs/platform-frontend) | Next.js 15 / React 19 / TypeScript. R3 architecture: DashboardLoader, WIDGETS registry, node-driven rendering, Settings → Models, AI Workspace copilot, Scenarios tab (stress/sensitivity/validation/library). | — | ● Active |
@@ -110,15 +110,35 @@ pd_curve = LiquidationBootstrap.fit(snapshot).pd_curve        # DeFi: on-chain
 cva = compute_cva(exposure_profile, pd_curve, ois_curve)     # same CVA engine
 ecl = compute_ecl(ead, pd_curve, lgd, stage)                  # same ECL engine
 ```
+### Portfolio & Trade Lifecycle
 
-### Graph-native
+First-class `Portfolio` entity: structured collection of trades flowing through all 18 layers. TradeDefinition captures the full instrument structure — product type, economic terms, counterparty, CSA, DeFi terms. NettingSet groups trades for CVA/SA-CCR. Ingestion pipeline: upload → parse → validate → normalise → enrich → store → construct. Product types are CalibrationRegistry strings — new instruments without code change.
 
-The graph is not a visualization layer — it is the primary data structure the system reasons from. Every assessment enriches a graph node. Every dependency is a weighted edge. DebtRank propagates distress. The agent reads graph neighbours during classification, not after.
+```python
+portfolio = Portfolio(trades=[
+    TradeDefinition(trade_id="T1", product_type="ir_swap", notional=10_000_000, ...),
+    TradeDefinition(trade_id="T2", product_type="swaption", notional=5_000_000, ...),
+    TradeDefinition(trade_id="T3", product_type="defi_lending", protocol="aave_v3", ...),
+])
+# Same portfolio feeds: pricing → Greeks → CVA → ECL → stress → FRTB → ICAAP → reporting
+```
 
-- **GraphStore** — NetworkX DiGraph in crediqs-data. Node = entity. Edge = financial relationship.
-- **DeXposure-FM** — 4,300 protocol dependency edges across 602 chains. Free, from HuggingFace.
-- **GNN Contagion** — GAT attention mechanism. Directed weighted financial graphs. Contagion multiplier per entity.
-- **DebtRank** — iterative distress propagation for systemic importance scoring.
+### Graph-native intelligence
+
+The graph is not a visualization — it is the primary data structure the system reasons from. Every assessment enriches a graph node. Every dependency is a weighted edge. DebtRank propagates distress. The agent reads graph neighbours **during classification**, not after.
+
+```
+Layer 1 (built):    Foundation — 6 memory layers, GraphStore, DeXposure-FM, 7 Docker services
+Layer 2 (active):   Continuous learning — every assessment enriches memory + graph + patterns
+Layer 3 (emerging): Graph RAG — traverse edges, compute via weights, answer with systemic context
+Layer 4 (emerging): Autonomous agents — Graph Agent, Risk Agent, Compliance Agent, Alert Agent
+```
+
+- **GraphStore** — NetworkX DiGraph. Node = entity. Edge = financial relationship.
+- **DeXposure-FM** — 4,300 protocol dependency edges across 602 chains.
+- **GNN Contagion** — GAT attention mechanism. Contagion multiplier per entity.
+- **DebtRank** — iterative distress propagation for systemic importance.
+- **Anomaly detection** — ECL spike, rating drift, pattern deviation, neighbour contagion, sector outlier.
 
 ### Memory-native
 
@@ -133,11 +153,36 @@ Memory is not conversation history replayed into a prompt. Memory is structured,
 | Org patterns | Accumulated decision patterns per org | memory_patterns table |
 | Sector patterns | Cross-org aggregation (privacy-preserving) | memory_interactions table |
 
+### AI agentic copilot
+
+The Workspace tab is not a chatbot — it is a risk intelligence copilot that answers from computed data, not from training knowledge. When a user asks "what is my DV01?", the copilot reads the portfolio, calls the Greeks engine, runs attribution through crediqs-explain, and responds with the user's actual numbers.
+
+```
+Question arrives
+  → classify reads entity_memory (structured, not replayed)
+  → classify reads graph_node (neighbours, weights, DebtRank)
+  → classify reads similar_cases (semantic vector search)
+  → classify reads org_patterns (accumulated decision history)
+  → LLM classifies WITH all of this as structured context
+  
+Assessment completes
+  → persist writes to memory_entities (entity knowledge grows)
+  → persist writes to graph node (graph knowledge grows)
+  → persist writes embedding (semantic search improves)
+  → next question about same entity is richer than the last
+```
+
+The agent discovers capabilities from the node catalogue — no hardcoded routing. Adding a new engine = inserting a catalogue node. The agent finds it on the next query.
+
+### Scenario engine
+
+Full stress testing lifecycle: regulatory scenarios (EBA 2025, Fed CCAR, PRA, OSFI), historical replay (GFC, COVID, crypto winter, USDC depeg), sensitivity analysis (single-factor, multi-factor, KRD, 2D surface), model validation (traffic light backtest, Kupiec, Christoffersen, PSI drift), reverse stress testing, FRTB capital under stress (SBM + DRC + RRAO), ICAAP aggregation (Pillar 1 + 2A + 2B), and climate stress (NGFS v5).
+
 ### Zero-fallback principle
 
-Every number shown on the platform must be traceable to a successful real-time market data pull, tool result, model output, database record, or user input. No hardcoded numeric fallbacks anywhere. If a registry key is missing or infrastructure is unreachable, modules raise `ValueError`, not silently use a wrong number.
+Every number shown on the platform must be traceable to a successful real-time market data pull, tool result, model output, database record, or user input. No hardcoded numeric fallbacks. No fabricated `pd_1y: 0.02` in seed data. No `entity: "SAMPLE"`. If a required value is missing, the module raises `ValueError` — it does not silently produce a number.
 
-### Explainability (9 adapters)
+### Explainability (risk adapters)
 
 Every engine output has a registered explain adapter. Every number carries its attribution.
 
