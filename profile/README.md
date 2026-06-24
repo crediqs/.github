@@ -182,7 +182,7 @@ Full stress testing lifecycle: regulatory scenarios (EBA 2025, Fed CCAR, PRA, OS
 
 Every number shown on the platform must be traceable to a successful real-time market data pull, tool result, model output, database record, or user input. No hardcoded numeric fallbacks. No fabricated `pd_1y: 0.02` in seed data. No `entity: "SAMPLE"`. If a required value is missing, the module raises `ValueError` — it does not silently produce a number.
 
-### Explainability (risk adapters)
+### Explainability (risk engine adapters)
 
 Every engine output has a registered explain adapter. Every number carries its attribution.
 
